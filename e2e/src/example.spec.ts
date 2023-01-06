@@ -1,18 +1,23 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.describe("Barista Demo app", () => {
+  test("should have main elements on landing page", async ({ page }) => {
+    await page.goto("http://localhost:4200/");
+    const mainHeading = await page.getByRole("heading");
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
+    expect(await mainHeading.textContent()).toEqual("Barista-Matic Coffee");
+  });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  test("should have show out-of-stock menu item", async ({ page }) => {
+    await page.goto("http://localhost:4200/");
+    await page.getByRole("button", { name: "Caffe Latte, $2.55" }).click();
+    await page.getByRole("button", { name: "Caffe Americano, $3.30" }).click();
+    await page.getByRole("button", { name: "Caffe Mocha, $3.35" }).click();
+    await page.getByRole("button", { name: "Cappuccino, $2.90" }).click();
+    
+    const content = await page.evaluate("window.getComputedStyle(document.querySelector('nb-card-body div:nth-child(4) button'), '::after').content")
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+    expect(content as string).toEqual('\"Out Of Stock\"');
+  });
 
-  // Expects the URL to contain intro.
-  await expect(page).toHaveURL(/.*intro/);
 });
