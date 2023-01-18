@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import percySnapshot from '@percy/playwright';
 
 test.describe("Barista Demo app", () => {
-  test.skip("should have main elements on landing page", async ({ page }) => {
+  test("should have main elements on landing page", async ({ page }) => {
     await page.goto("http://localhost:4200/");
     const mainHeading = await page.getByRole("heading");
 
