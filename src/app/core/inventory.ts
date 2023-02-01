@@ -1,10 +1,12 @@
 import { Ingredient, DecafCoffee, Sugar, Cream, Cocoa, Espresso, FoamedMilk, SteamedMilk, WhippedCream, Coffee } from './ingredient';
+import { Injectable } from "@angular/core";
 
 export interface IngredientQuantity {
   ingredient: string;
   quantity: number;
 }
 
+@Injectable()
 export class Inventory {
 
   private quantities = new Map<string, number>();
@@ -49,7 +51,7 @@ export class Inventory {
   // Checks if there is the specified amount of ingredients in the inventory
   enoughOf(ingredient: string, qty: number): boolean {
     if (this.ingredients.has(ingredient)) {
-      if (this.quantities.get(ingredient) >= qty) {
+      if (this.quantities.get(ingredient)! >= qty) {
         return true;
       } else {
         return false;
@@ -62,8 +64,8 @@ export class Inventory {
   // Returns the specified ingredient and decreases its quantity in the inventory
   get(ingredient: string): Ingredient {
     if (this.enoughOf(ingredient, 1)) {
-      this.quantities.set(ingredient, this.quantities.get(ingredient) - 1);
-      return this.ingredients.get(ingredient).clone();
+      this.quantities.set(ingredient, this.quantities.get(ingredient)! - 1);
+      return this.ingredients.get(ingredient)!.clone();
     } else {
       throw new Error(`Not enough ${ingredient}`);
     }
@@ -72,7 +74,7 @@ export class Inventory {
   // Returns the cost of an ingredient in cents ($1.00 = 100)
   getCost(ingredient: string): number {
     if (this.ingredients.has(ingredient)) {
-      return this.ingredients.get(ingredient).cost();
+      return this.ingredients.get(ingredient)!.cost();
     } else {
       throw new Error(`${ingredient} not found to return cost.`);
     }
