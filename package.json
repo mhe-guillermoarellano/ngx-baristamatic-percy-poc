@@ -10,8 +10,8 @@
     "ng": "ng",
     "start": "node ./scripts/build-pre.js && ng serve",
     "build": "node ./scripts/build-pre.js && ng build --prod",
-    "test": "ng test",
     "watch": "ng build --watch --configuration development",
+    "test": "ng test",
     "e2e:test": "playwright test",
     "visual:regression:test": "percy exec -- npm run e2e:test"
   },
