@@ -1,11 +1,8 @@
 # Baristamatic Angular Demo
 
-[![Build Status](https://travis-ci.org/guillermoarellano/ngx-baristamatic-demo.svg?branch=master)](https://travis-ci.org/guillermoarellano/ngx-baristamatic-demo)
-[![GitHub version](https://badge.fury.io/gh/guillermoarellano%2Fngx-baristamatic-demo.svg)](https://badge.fury.io/gh/guillermoarellano%2Fngx-baristamatic-demo)
+This project is with created with version 13.3 of the [Angular JavaScript framework](https://v13.angular.io/docs).
 
 A working demo of the repo is deployed here: <https://baristamatic.netlify.com/>
-
-This project is generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2. It uses version 8 of the [Angular framework](https://v8.angular.io/docs).
 
 ## Problem Requirements
 
@@ -13,24 +10,25 @@ To see the full requirements for this coding challenge, visit this [link](https:
 
 ## Prerequisites
 
-Both the CLI and generated project have dependencies that require Node 10.13.0 or higher, together with NPM 6.9.0 or higher.
+Both the CLI and generated project have dependencies that require Node 16.14.0 or higher, together with NPM 8.5.0 or higher.
 
 Click the [link](https://nodejs.org/en/) and install Node/NPM on your machine before you continue.
 
-## Downloading and running the app
+## Downloading and installing the app
 
 1. Download and extract the files in the Zip file of this code onto your local machine
 2. Open a command terminal window and navigate to the extracted contents folder directory
-3. Run `npm install` to install all of the web app dependencies (make sure Node and NPM are already installed!)
-4. To run, follow the instructions below to initiate the development server
+3. Run `npm ci` to install all of the web app dependencies defined in the `package-lock.json` file (make sure Node and NPM are already installed!)
+4. Run `npx playwright install` to install the browsers that will be needed by our E2E tests.
+5. To run, follow the instructions below to initiate the development server
 
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Build
+## Run E2E tests
 
-Run `ng build --prod` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run e2e:test` to end-to-end test the project using [Playwright](https://playwright.dev/). 
 
 ## Further help
 
