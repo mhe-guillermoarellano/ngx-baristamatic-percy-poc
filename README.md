@@ -4,6 +4,8 @@ This project is with created with version 13.3 of the [Angular JavaScript framew
 
 A working demo of the repo is deployed here: <https://baristamatic.netlify.com/>
 
+Simple change, should not trigger a visual change in Percy given ignore region set for date in the app.
+
 ## Problem Requirements
 
 To see the full requirements for this coding challenge, visit this [link](https://drive.google.com/open?id=1c4Ei1pOsLWaLqL_OjO0t-DY-9rmycaGT).
